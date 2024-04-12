@@ -1,0 +1,20 @@
+body{
+    background-color: white;
+    color:grey;
+    font-family: "Platypi", serif;
+    font-optical-sizing: auto;
+    
+}
+
+header{
+    background-image: linear-gradient(to right, rgb(19, 23, 255) , rgb(19, 104, 255));
+}
+
+a {
+    color: whitesmoke !important;
+    text-decoration: none;
+}
+  
+svg{
+    fill:aliceblue !important;
+}

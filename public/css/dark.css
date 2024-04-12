@@ -1,0 +1,10 @@
+p body{
+    background-color: rgb(30, 30, 30);
+    color:lightgray;
+    font-family: "Platypi", serif;
+    font-optical-sizing: auto;
+}
+
+header{
+    background-color: rgb(20, 20, 20);
+}
