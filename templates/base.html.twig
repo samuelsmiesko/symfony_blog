@@ -19,41 +19,65 @@
     </head>
     <body>
         
-        <header class="p-3 ">
+    <header class="p-3 ">
         <div class="container p-3">
-        <div class="m-2 d-flex">
-            
-            <form class="col-md-6 col-sm-12" role="search">
-                <input type="search" class="form-control form-control-dark " placeholder="Search..." aria-label="Search">
-            </form>
-            <div >
-                <svg  xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-search m-2" viewBox="0 0 16 16">
-                    <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
-                </svg>
+            <div class="row">
+                <div class="m-2 d-flex">
+                    <form class="col-md-6 col-sm-12" role="search">
+                        <input type="search" class="form-control form-control-dark " placeholder="Search..." aria-label="Search">
+                    </form>
+                    <div >
+                        <svg  xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-search m-2" viewBox="0 0 16 16">
+                            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
+                        </svg>
+                    </div>
+                </div>
             </div>
-        </div>
-        <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+            <div class="row">
+                <div class="d-none d-sm-flex ">
+                    <div class="col-8">
+                    </div>
+                    <div class="col-4 d-flex">
+                        <span><a href="#" class="m-2">Home</a></span>
+                        <span><a href="#" class="m-2">Home</a></span>
+                        <span><a href="#" class="m-2">Home</a></span>
+                        <span>
+                            <div onclick="myFunction()">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="ms-5  bi bi-circle-half" viewBox="0 0 16 16">
+                                <path d="M8 15A7 7 0 1 0 8 1zm0 1A8 8 0 1 1 8 0a8 8 0 0 1 0 16"/>
+                                </svg>
+                            </div>
+                        </span>
+                        <span class="">
+                            <div onclick="myFunction()">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="ms-5 bi bi-person" viewBox="0 0 16 16">
+                                <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6m2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0m4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4m-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10s-3.516.68-4.168 1.332c-.678.678-.83 1.418-.832 1.664z"/>
+                                </svg>
+                            </div>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            
 
-            <ul class="nav col-12 col-lg-auto me-lg-auto">
-            <li><a href="#" class="nav-link px-2 ">Home</a></li>
-            <li><a href="#" class="nav-link px-2 ">Home</a></li>
-            <li><a href="#" class="nav-link px-2 ">Home</a></li>
-            <li>
-                <div onclick="myFunction()">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="ms-5 mt-2 bi bi-circle-half" viewBox="0 0 16 16">
-                    <path d="M8 15A7 7 0 1 0 8 1zm0 1A8 8 0 1 1 8 0a8 8 0 0 1 0 16"/>
-                    </svg>
-                </div>
-            </li>
-            <li class="text-end">
-                <div onclick="myFunction()">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="ms-5 mt-2 bi bi-person" viewBox="0 0 16 16">
-                    <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6m2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0m4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4m-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10s-3.516.68-4.168 1.332c-.678.678-.83 1.418-.832 1.664z"/>
-                    </svg>
-                </div>
-            </li>
-            </ul>
-        </div>
+            <div class="d-flex d-sm-none ">
+                    <div>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="grey" class="bi bi-list"
+                            viewBox="0 0 16 16" data-bs-toggle="dropdown" aria-expanded="false">
+                            <path fill-rule="evenodd"
+                                d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5" />
+                        </svg>
+                        <ul class="dropdown-menu fs-3 w-100 mt-3 smallMenu" style="">
+                            <li><a class="dropdown-item" href="#">Home</a></li>
+                            <li><a class="dropdown-item" href="#">Home</a></li>     
+                        </ul>
+                    </div>
+                    <div onclick="myFunction()">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="ms-5 mt-2 bi bi-circle-half" viewBox="0 0 16 16">
+                        <path d="M8 15A7 7 0 1 0 8 1zm0 1A8 8 0 1 1 8 0a8 8 0 0 1 0 16"/>
+                        </svg>
+                    </div> 
+            </div>
         </div>
     </header>
         {% block body %}{% endblock %}

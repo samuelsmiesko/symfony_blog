@@ -10,11 +10,15 @@ header{
     background-image: linear-gradient(to right, rgb(19, 23, 255) , rgb(19, 104, 255));
 }
 
-a {
+ a {
     color: whitesmoke !important;
     text-decoration: none;
 }
   
 svg{
     fill:aliceblue !important;
+}
+
+.smallMenu{
+    color:black !important;
 }
