@@ -10,8 +10,12 @@ header{
     background-image: linear-gradient(to right, rgb(19, 23, 255) , rgb(19, 104, 255));
 }
 
- a {
-    color: whitesmoke !important;
+.image1{
+    color:aliceblue;
+    
+}
+
+a{
     text-decoration: none;
 }
   
@@ -22,3 +26,23 @@ svg{
 .smallMenu{
     color:black !important;
 }
+
+h4{
+    color:azure;
+    background-color: rgb(19, 104, 255);
+}
+
+.square{
+    
+    background-color:rgb(19, 104, 255);
+    height: 5px;
+    width: 5px;
+    position: relative;
+    top: 15px;
+}
+
+.flash{
+    border-bottom: 1px dashed lightgrey;
+    
+}
+

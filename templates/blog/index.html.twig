@@ -11,15 +11,83 @@
 <div class="example-wrapper">
    
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code>C:/symfony/final_stranky/blogapp/src/Controller/BlogController.php</code></li>
-        <li>Your template at <code>C:/symfony/final_stranky/blogapp/templates/blog/index.html.twig</code></li>
-    </ul>
-    {% for key, post in posts %}
+    
+    {# {% for key, post in posts %}
         {{post.article}}
         <p>{{post.image}}</p>
         <img alt="Embedded Image" src="data:image/png;base64,{{ images[key] }}" />
-    {% endfor %}
+    {% endfor %} #}
+
+    <div class="row">
+        <div class="col-6 p-0 ">
+            {% for key, post in posts|slice(0, 1) %}
+                {% if post.priority == 1 %}
+                        <a href="">
+                            <div  class="image1" style=" height:400px; background-repeat: no-repeat;
+                                background-size: cover; 
+                                position: relative;
+                                
+                                
+                                background-image:url('data:image/png;base64,{{ images[key] }}')">
+                                <h4>{{post.title}}</h4>
+                                <div class="paragraph ">{{post.article}}</div>
+                            </div>
+                        </a>
+                {% endif %}
+            {% endfor %}
+        </div>
+
+        <div class="col-6 p-0 " >
+            {% for key, post in posts|slice(0, 3) %}
+                {% if post.priority == 2 %}
+                        <a href="">
+                            <div  class="image1" style=" height:200px; background-repeat: no-repeat;
+                                background-size: cover; 
+                                position: relative;
+
+                                background-image:url('data:image/png;base64,{{ images[key] }}')">
+                                <h4>{{post.title}}</h4>
+                                <div class="paragraph ">{{post.article}}</div>
+                            </div>
+                        </a>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="container mt-3 "> 
+            
+            
+            {% set foo = 5 %}
+            
+            {% for post in posts|slice(0, foo) %}
+            
+            <div class="inline-block m-4 flash">
+                <div class="square "></div>
+                
+                
+                <div class="d-inline m-3  ">{{post.title}}</div>
+                <div class="d-inline float-end  ">{{post.author}}</div>
+                {{loop.last}}
+            </div>
+            {% endfor %}
+        
+    </div>
+    <div class="d-flex mt-5 justify-content-center ">
+        <ul class="pagination ">
+        <li class="page-item disabled"><a  class="page-link" href="#">Previous</a></li>
+        {% set break = 0 %}
+        {% for post in posts %}
+            {% set foo = loop.length / 10 %}
+                {% if break == 0 %}
+                    <li class="page-item"><a  class="page-link paginationTag bg-white" href="#">{{loop.index}}</a></li>
+                {% endif %}
+                {% if loop.index > foo %}
+                    {% set break = 1 %}
+                {% endif %}
+        {% endfor %}
+        <li class="page-item"><a  class="page-link paginationTag bg-white" href="#">Next</a></li>
+        </ul>
+    </div>
 </div>
 {% endblock %}

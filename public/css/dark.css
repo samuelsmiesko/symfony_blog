@@ -8,3 +8,42 @@ body{
 header{
     background-color: rgb(20, 20, 20);
 }
+
+h4{
+    color:lightgray;
+    background-color: rgb(20, 20, 20);
+}
+
+.image1{
+    color:aliceblue;
+    
+}
+
+a{
+    text-decoration: none;
+}
+
+
+.paragraph{
+    color:lightgray;
+    
+    overflow: hidden;
+    white-space: nowrap; /* Don't forget this one */
+    text-overflow: ellipsis;
+    
+}
+
+.square{
+    
+    background-color:lightgray;
+    height: 5px;
+    width: 5px;
+    position: relative;
+    top: 15px;
+}
+
+.flash{
+    border-bottom: 1px dashed lightgrey;
+    
+}
+
