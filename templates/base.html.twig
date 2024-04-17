@@ -24,7 +24,7 @@
             <div class="row">
                 <div class="m-2 d-flex">
                     <form class="col-md-6 col-sm-12 " role="search">
-                        <input style="color:grey " type="search" class="form-control form-control-dark paginationTag"  aria-label="Search" id="fname" name="fname" onkeyup="showHint(this.value)">
+                        <input  type="search" class="form-control form-control-dark paginationTag"  aria-label="Search" id="fname" name="fname" >
                     </form>
                     <div >
                         <svg  xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-search m-2" viewBox="0 0 16 16">
@@ -79,8 +79,9 @@
                     </div> 
             </div>
         </div>
-        <p>Suggestions: <span id="txtHint"></span></p>
+        
     </header>
+    
         {% block body %}{% endblock %}
 
     <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top ">
@@ -102,8 +103,17 @@
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
         <script src="/js/file.js"></script>
-        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script> 
         
+        <script>
+            {# function mySearch() {
+                let x = document.getElementById("fname").value;
+                document.getElementById("demo").innerHTML = x;
+            } #}
+
+            
+            
+        </script> 
+        </script>
  
     </body>
 </html>

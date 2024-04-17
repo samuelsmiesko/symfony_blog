@@ -1,7 +1,6 @@
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script> 
 
 
-    
+
 const csslink = document.querySelector("#myImg");
 if (localStorage.getItem("variable") === "white") {
     document.querySelectorAll(".paginationTag").forEach((el) => {
@@ -51,9 +50,6 @@ document.getElementById("lightDark").addEventListener("click",function(event){
     }
 });
 
-jQuery(document).ready(function() {
-    var searchRequest = null;
-    $("#search").keyup(function() {
-        
-    });
-});
+
+
+

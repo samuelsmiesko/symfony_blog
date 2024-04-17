@@ -9,27 +9,19 @@
 </style>
 
 <div class="example-wrapper">
-   
-
-    
-    {# {% for key, post in posts %}
-        {{post.article}}
-        <p>{{post.image}}</p>
-        <img alt="Embedded Image" src="data:image/png;base64,{{ images[key] }}" />
-    {% endfor %} #}
-
+ 
     <div class="row">
         <div class="col-6 p-0 ">
-            {% for key, post in posts|slice(0, 1) %}
-                {% if post.priority == 1 %}
+            {% for key, list in lists|slice(0, 1) %}
+                {% if list.priority == 1 %}
                         <a href="">
                             <div  class="image1" style=" height:400px; background-repeat: no-repeat;
                                 background-size: cover; 
                                 position: relative;
 
                                 background-image:url('data:image/png;base64,{{ images[key] }}')">
-                                <h4>{{post.title}}</h4>
-                                <div class="paragraph ">{{post.article}}</div>
+                                <h4>{{list.title}}</h4>
+                                <div class="paragraph ">{{list.article}}</div>
                             </div>
                         </a>
                 {% endif %}
@@ -38,17 +30,17 @@
 
         <div class="col-6 p-0 " >
             {% set foo = 5 %}
-            {% for key, post in posts|slice(0, 3) %}
-                {% if post.priority == 2 %}
+            {% for key, list in lists|slice(0, 3) %}
+                {% if list.priority == 2 %}
                         <a href="">
                             <div  class="image1" style=" height:200px; background-repeat: no-repeat;
                                 background-size: cover; 
                                 position: relative;
 
                                 background-image:url('data:image/png;base64,{{ images[key] }}')">
-                                <h4>{{post.title}}</h4>
+                                <h4>{{list.title}}</h4>
                                 {# {{foo}} #}
-                                <div class="paragraph ">{{post.article}}</div>
+                                <div class="paragraph ">{{list.article}}</div>
                             </div>
                         </a>
                 {% endif %}
@@ -58,12 +50,12 @@
 
     <div class="container mt-3 "> 
       
-            {% for post in posts|slice(4, foo) %}
+            {% for post in posts|slice(0, 5) %}
             
             <div class="inline-block m-4 flash">
                 <div class="square "></div>
                 <div class="d-inline m-3  ">{{post.title}}</div>
-                {# <div class="d-inline m-3  ">{{foo}}</div> #}
+                {# <div class="d-inline m-3  ">{{foo}}</div>  #}
                 <div class="d-inline float-end  ">{{post.author}}</div>             
             </div>
             {% endfor %}
@@ -73,12 +65,14 @@
         <ul class="pagination ">
         <li class="page-item "><a  class="page-link paginationTag bg-white" href="#">Previous</a></li>
         {% set break = 0 %}
-        {% for post in posts %}
-            {% set foo = loop.length / 10 %}
+        {% for list in lists %}
+            {% set foo = loop.length / 5 %}
                 {% if break == 0 %}
-                    <li class="page-item"><a id="{{loop.index}}" onclick="SetCounter()" class="page-link paginationTag bg-white" href="#">{{loop.index}}</a></li>
+                    <li class="page-item"><a id="{{loop.index}}" onclick="SetCounter()" class="page-link paginationTag bg-white" href="{{ path('blogPick',{page: loop.index})}}">{{loop.index}}</a></li>
+                    
                 {% endif %}
                 {% if loop.index > foo %}
+                    
                     {% set break = 1 %}
                 {% endif %}
         {% endfor %}
