@@ -20,16 +20,23 @@ class BlogController extends AbstractController
     {
         //$posts = $this->em->getRepository(Blogs::class)->FindAll();
         try{
+            $lists = $this->em->getRepository(Blogs::class)->findBy(
+                array(),
+                array('id' => 'DESC'),
+                10,
+                0
+            );
+                    
+            $currentPage = 1;
+
             $posts = $this->em->getRepository(Blogs::class)->findBy(
                 array(),
                 array('id' => 'ASC'),
-                5,
-                0
+                
             );
-            
-            $lists = $posts;
+
             $images = array();
-            foreach ($posts as $key => $entity) {
+            foreach ($lists as $key => $entity) {
                 $images[$key] = base64_encode(stream_get_contents($entity->getImage()));
             }
             
@@ -37,6 +44,7 @@ class BlogController extends AbstractController
                 'lists' => $lists,
                 'posts' => $posts,
                 'images' => $images,
+                'currentPage' => $currentPage,
             ]);
         }catch(\Exception $e){
             
@@ -51,15 +59,18 @@ class BlogController extends AbstractController
     public function pickPage($page): Response
     {
         try{
-            $lists = $this->em->getRepository(Blogs::class)->FindAll(
+            $lists = $this->em->getRepository(Blogs::class)->findBy(
                 array(),
                 array('id' => 'ASC'),
-                5,
+                10,
                 0
             );
 
             $TopLimit = $page * 5;
             $BottomLimit = ($page * 5)-4;
+
+            $previousPage = $page - 1;
+            $nextPage = $page + 1;
 
             $posts = $this->em->getRepository(Blogs::class)->findBy(
                 array(),
@@ -69,7 +80,7 @@ class BlogController extends AbstractController
             );
             
             $images = array();
-            foreach ($posts as $key => $entity) {
+            foreach ($lists as $key => $entity) {
                 $images[$key] = base64_encode(stream_get_contents($entity->getImage()));
             }
             
@@ -78,6 +89,8 @@ class BlogController extends AbstractController
                 'lists' => $lists,
                 'posts' => $posts,
                 'images' => $images,
+                'previousPage' => $previousPage,
+                'nextPage' => $nextPage,
             ]);
         }catch(\Exception $e){
             

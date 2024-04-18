@@ -18,6 +18,12 @@
         {% endblock %}
     </head>
     <body class="paginationTag bg-white">
+
+    <div class="spinner-wrapper d-flex justify-content-center align-items-center">
+        <div class="spinner-border" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+    </div>
         
     <header class="p-3 ">
         <div class="container p-3">
@@ -109,6 +115,19 @@
                 let x = document.getElementById("fname").value;
                 document.getElementById("demo").innerHTML = x;
             } #}
+
+
+            const spinnerEl = document.querySelector('.spinner-wrapper');
+        
+            window.addEventListener('load', ()=>{
+                
+                //spinnerEl.style.opacity = '0';
+
+                setTimeout(()=>{
+                    
+                    spinnerEl.classList.add('d-none');
+                },0)
+            })
 
             
             
