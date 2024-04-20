@@ -19,11 +19,11 @@
     </head>
     <body class="paginationTag bg-white">
 
-    <div class="spinner-wrapper d-flex justify-content-center align-items-center">
+    {# <div class="spinner-wrapper d-flex justify-content-center align-items-center">
         <div class="spinner-border" role="status">
             <span class="visually-hidden">Loading...</span>
         </div>
-    </div>
+    </div> #}
         
     <header class="p-3 ">
         <div class="container p-3">
@@ -104,12 +104,19 @@
         <li class="ms-3"><a class="text-body-secondary" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#facebook"></use></svg></a></li>
         </ul>
 
+        <a id = "loadstudent" href = "#">Load student information</a>  
+        
+        
+        <table class = "table">  
+            <tbody id = "student"></tbody>  
+        </table> 
+
         
     </footer>
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
         <script src="/js/file.js"></script>
-        
+        <script    src = "https://code.jquery.com/jquery-2.2.4.min.js"></script>
         <script>
             {# function mySearch() {
                 let x = document.getElementById("fname").value;
@@ -120,19 +127,44 @@
             const spinnerEl = document.querySelector('.spinner-wrapper');
         
             window.addEventListener('load', ()=>{
-                
-                //spinnerEl.style.opacity = '0';
-
+ 
                 setTimeout(()=>{
                     
                     spinnerEl.classList.add('d-none');
                 },0)
-            })
+            }) 
 
-            
-            
+            $(document).ready(function(){   
+                $("#loadstudent").on("click", function(event){  
+                    $.ajax({  
+                    url:        '/student/ajax',  
+                    type:       'POST',   
+                    dataType:   'json',  
+                    async:      true,  
+                    
+                    success: function(data, status) {  
+                        var e = $('<tr><th>Name</th><th>Address</th></tr>');  
+                        $('#student').html('');  
+                        $('#student').append(e);  
+                        
+                        for(i = 0; i < data.length; i++) {  
+                            student = data[i];  
+                            var e = $('<tr><td id = "name"></td><td id = "address"></td></tr>');
+                            
+                            $('#name', e).html(student['title']);  
+                            $('#address', e).html(student['article']);  
+                            $('#student').append(e);  
+                        }  
+                    },  
+                    error : function(xhr, textStatus, errorThrown) {  
+                        alert('Ajax request failed.');  
+                    }  
+                    });  
+                });  
+        });
+
+   
         </script> 
-        </script>
- 
+
     </body>
 </html>

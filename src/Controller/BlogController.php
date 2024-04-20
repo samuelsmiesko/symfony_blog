@@ -4,6 +4,8 @@ namespace App\Controller;
 use App\Entity\Blogs;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Attribute\Route;
 use Doctrine\ORM\EntityManagerInterface;
 class BlogController extends AbstractController
@@ -27,7 +29,7 @@ class BlogController extends AbstractController
                 0
             );
                     
-            $currentPage = 1;
+            
 
             $posts = $this->em->getRepository(Blogs::class)->findBy(
                 array(),
@@ -44,7 +46,7 @@ class BlogController extends AbstractController
                 'lists' => $lists,
                 'posts' => $posts,
                 'images' => $images,
-                'currentPage' => $currentPage,
+                
             ]);
         }catch(\Exception $e){
             
@@ -69,8 +71,7 @@ class BlogController extends AbstractController
             $TopLimit = $page * 5;
             $BottomLimit = ($page * 5)-4;
 
-            $previousPage = $page - 1;
-            $nextPage = $page + 1;
+            
 
             $posts = $this->em->getRepository(Blogs::class)->findBy(
                 array(),
@@ -89,8 +90,7 @@ class BlogController extends AbstractController
                 'lists' => $lists,
                 'posts' => $posts,
                 'images' => $images,
-                'previousPage' => $previousPage,
-                'nextPage' => $nextPage,
+                
             ]);
         }catch(\Exception $e){
             
@@ -99,4 +99,26 @@ class BlogController extends AbstractController
         
         }    
     }
+
+    
+    #[Route("/student/ajax")]
+    
+    public function ajaxAction(Request $request) {  
+        $students = $this->em->getRepository(Blogs::class)->FindAll(); 
+        
+        if ($request->isXmlHttpRequest() || $request->query->get('showJson') == 1) {  
+        $jsonData = array();  
+        $idx = 0;  
+        foreach($students as $student) {  
+            $temp = array(
+                'title' => $student->getTitle(),  
+                'article' => $student->getArticle(),  
+            );   
+            $jsonData[$idx++] = $temp;  
+        } 
+        return new JsonResponse($jsonData); 
+        } else { 
+        return $this->render('base.html.twig'); 
+        } 
+    }    
 }
