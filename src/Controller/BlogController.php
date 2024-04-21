@@ -61,6 +61,9 @@ class BlogController extends AbstractController
     public function pickPage($page): Response
     {
         try{
+            
+
+            
             $lists = $this->em->getRepository(Blogs::class)->findBy(
                 array(),
                 array('id' => 'ASC'),
@@ -91,6 +94,7 @@ class BlogController extends AbstractController
                 'posts' => $posts,
                 'images' => $images,
                 
+                
             ]);
         }catch(\Exception $e){
             
@@ -104,7 +108,22 @@ class BlogController extends AbstractController
     #[Route("/student/ajax")]
     
     public function ajaxAction(Request $request) {  
-        $students = $this->em->getRepository(Blogs::class)->FindAll(); 
+
+        
+        if(isset($_REQUEST)){
+            $limit = $_REQUEST['get_variable'];
+        }
+
+        $TopLimit = $limit * 5;
+        $BottomLimit = ($limit * 5)-4;
+        
+
+        $students = $this->em->getRepository(Blogs::class)->findBy(
+            array(),
+            array('id' => 'ASC'),
+            $TopLimit,
+            $BottomLimit
+        ); 
         
         if ($request->isXmlHttpRequest() || $request->query->get('showJson') == 1) {  
         $jsonData = array();  
@@ -113,6 +132,8 @@ class BlogController extends AbstractController
             $temp = array(
                 'title' => $student->getTitle(),  
                 'article' => $student->getArticle(),  
+                'id' => $student->getId(),
+                
             );   
             $jsonData[$idx++] = $temp;  
         } 
