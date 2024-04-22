@@ -25,7 +25,7 @@ class BlogController extends AbstractController
             $lists = $this->em->getRepository(Blogs::class)->findBy(
                 array(),
                 array('id' => 'DESC'),
-                10,
+                15,
                 0
             );
                     
