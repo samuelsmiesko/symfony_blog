@@ -142,4 +142,23 @@ class BlogController extends AbstractController
         return $this->render('base.html.twig'); 
         } 
     }    
+
+    #[Route('/blog/{id}', name: 'blogPick')]
+    public function gallery($id): Response
+    {
+        $posts = $this->em->getRepository(Blogs::class)->findBy(
+            array(),
+            array('id' => 'ASC'),
+            
+        );
+
+        
+
+        return $this->render('blog/blog.html.twig', [
+            
+            'picked' => $id,
+            'posts' => $posts,
+            
+        ]);
+    }
 }
