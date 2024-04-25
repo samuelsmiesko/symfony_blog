@@ -56,11 +56,27 @@ a{
     width: 100%;
     height: 100%;
     z-index: 99;  
-    opacity: 0.5;
+    
+    animation-name: example_spinner;
+    animation-duration: 1s;
+    animation-fill-mode: forwards ;
+}
+ 
+@keyframes example_spinner {
+    from {opacity: 0.0;}
+    to {opacity: 0.5;}
 }
 
 .spinner-border{
     color:black;
     height: 60px;
     width: 60px;
+}
+
+#modalCookie{
+    position: fixed;
+    z-index: 500;
+    bottom: 0;
+    width: 100%;
+  
 }

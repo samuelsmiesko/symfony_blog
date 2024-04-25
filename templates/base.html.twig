@@ -24,7 +24,16 @@
         </div>
     </div>  #}
 
-    <div class="spinner-wrapper d-flex justify-content-center align-items-center"></div>
+    <div class="spinner-wrapper d-flex justify-content-center align-items-center d-none">
+        
+    </div>
+
+    <div id="modalCookie" class=" paginationTag bg-white text-center p-3 d-none">    
+            <h1>Allow cookie</h1>
+            <p>Cookie consent</p>
+            <button id="CancelBtn" type="button" class="btn btn-success">Accept</button>
+            <button id="AcceptBtn" type="button" class="btn btn-danger">Reject</button>
+    </div>
         
     <header class="p-3 ">
         <div class="container p-3">
@@ -120,6 +129,7 @@
               crossorigin="anonymous"></script>
         <script src="{{asset('js/file.js')}}"></script>
         <script src="{{asset('js/ajax.js')}}"></script>
+        <script src="{{asset('js/cookie.js')}}"></script>
         <script type="text/javascript">
 
         var student;
