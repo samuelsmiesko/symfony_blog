@@ -152,13 +152,16 @@ class BlogController extends AbstractController
             
         );
 
-        
+        $images = array();
+            foreach ($posts as $key => $entity) {
+                $images[$key] = base64_encode(stream_get_contents($entity->getImage()));
+            }
 
         return $this->render('blog/blog.html.twig', [
             
             'picked' => $id,
             'posts' => $posts,
-            
+            'images' => $images,
         ]);
     }
 }
