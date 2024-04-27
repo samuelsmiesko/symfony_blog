@@ -117,7 +117,6 @@ class BlogController extends AbstractController
         $TopLimit = $limit * 5;
         $BottomLimit = ($limit * 5)-4;
         
-
         $students = $this->em->getRepository(Blogs::class)->findBy(
             array(),
             array('id' => 'ASC'),
