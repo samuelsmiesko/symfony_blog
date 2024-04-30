@@ -163,4 +163,43 @@ class BlogController extends AbstractController
             'images' => $images,
         ]);
     }
+
+
+    #[Route("/liveSearch/ajax")]
+    
+    public function searchAction(Request $request){
+
+        if(isset($_REQUEST)){
+            $word = $_REQUEST['get_variable'];
+            
+        }
+        
+        $results = $this->em->getRepository(Blogs::class)->createQueryBuilder('o')
+            
+            ->andWhere('o.article LIKE :searchTerm')
+            ->setParameter('searchTerm', '%'.$word.'%')
+            
+            ->getQuery()
+            ->getResult();
+
+            if ($request->isXmlHttpRequest() || $request->query->get('showJson') == 1) {  
+                $jsonData = array();  
+                $idx = 0;  
+                foreach($results as $result) {  
+                    $temp = array(
+                        'title' => $result->getTitle(),  
+                        'article' => $result->getArticle(),  
+                        'id' => $result->getId(),
+                        
+                    );   
+                    $jsonData[$idx++] = $temp;  
+                } 
+                return new JsonResponse($jsonData); 
+                } else { 
+                return $this->render('base.html.twig'); 
+                }
+        } 
+        
+        
+    
 }

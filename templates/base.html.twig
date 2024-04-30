@@ -39,8 +39,9 @@
         <div class="container p-3">
             <div class="row">
                 <div class="m-2 d-flex">
-                    <form class="col-md-6 col-sm-12 " role="search">
-                        <input  type="search" class="form-control form-control-dark paginationTag"  aria-label="Search" id="fname" name="fname" >
+                    <form class="col-md-6 col-sm-12"  role="search" method="post" >
+                        <input  type="text" class="form-control livesearchbar" name="search"  >
+                        
                     </form>
                     <div >
                         <svg  xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-search m-2" viewBox="0 0 16 16">
@@ -114,7 +115,8 @@
         <li class="ms-3"><a class="text-body-secondary" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#facebook"></use></svg></a></li>
         </ul>
 
-        
+        <div class="row" id= "livesearchdiv">
+        </div> 
 
     </footer>
     
@@ -135,7 +137,7 @@
         var i;
 
         function readyFn( jQuery ) {  
-            
+            console.log("work");
             var qID = $(this).attr('id');
 
             if(qID == null){
@@ -176,6 +178,53 @@
         $( document ).ready( readyFn );
 
         $(".loadstudent").on( "click", readyFn );   
+
+         
+
+        // live search
+
+        $(document).ready(function(){   
+            $(".livesearchbar").keyup(function(){
+                var query = $(this).val();
+                console.log(query);
+                $.ajax({
+                    url:        '/liveSearch/ajax',  
+                    type:       'POST',   
+                    dataType:   'json', 
+                    data:       {
+                        'get_variable': query
+                    },
+
+                        success: function(data, status) {  
+                        $("#student a").remove();    
+                        console.log(data.length,"data.length");   
+                            if(data.length ==0){
+                                 var e = $('<div class="d-flex justify-content-center fs-4 p-5" id = "result" >No results</div>');    
+                                 $('#result', e).html(student['article']);  
+                                 $('#student').append(e);  
+                            }else{
+                                       
+                                 for(i = 0; i < data.length; i++) {  
+                                    student = data[i];  
+                                    var e = $('<a><div class="d-flex " style="border-bottom: dashed 1px whitesmoke;"><div class="col-2" id = "name"></div><div class="col-10" id = "address"></div></div></a>');
+                                    $(e).attr('href', student['id']);
+                                    $('#name', e).html(student['title']);  
+                                    $('#address', e).html(student['article']);  
+                                    $('#student').append(e);  
+                                   
+                                }
+                            }
+                        },  
+                        error : function(xhr, textStatus, errorThrown) {  
+                            alert('Ajax request failed.');  
+                        }  
+                        
+                    });   
+            }); 
+        }); 
+
+
+
         </script>
 
     {% endblock %}
