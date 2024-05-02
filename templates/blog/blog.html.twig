@@ -45,7 +45,7 @@
                     <p class="text-secondary text-start">{{post.author}}</p>
                 </div>
                 <div class="col-1">
-                    <img src="{{ asset("images/userImages/ivan.jpg")}}" class="text-end img-rounded" alt="author" height="20"> 
+                    <img src="" class="text-end img-rounded" alt="author" height="20"> 
                 </div>
                 <div class="col-1">
                     <p class="text-secondary text-end">{{post.author}}</p>
@@ -95,22 +95,19 @@
         </div>
     </div>
 
-        <div data-aos="fade-in" class="comments d-none">
-            <div style="border-style: none none none solid; border-width: 8px; "class="text-secondary   text-start">
-                <div style="border-style: none none dashed none; border-width: 1px; ">
-                    <p class="ps-3 pt-2">Some reaction</p>
+        <div  class="comments">
+            {% for comment in comments %}
+            <div style="border-style: none none none solid; border-width: 8px; ">
+                <div class="text-secondary p-3 "  style="border-style: none none dashed none; border-width: 1px; " >
+                    <div class="d-flex">
+                        <div class="col"><div class="float-start">{{comment.author}}</div></div>
+                        <div class="col"><div class="float-end">{{comment.date}}</div></div>
+                    </div>
+                    <div class="d-flex">{{comment.article}}</div>
                 </div>
             </div>
-            <div style="border-style: none none none solid; border-width: 8px; "class="text-secondary   text-start">
-                <div style="border-style: none none dashed none; border-width: 1px; ">
-                    <p class="ps-3 pt-2">Some reaction</p>
-                </div>
-            </div>
-            <div style="border-style: none none none solid; border-width: 8px; "class="text-secondary   text-start">
-                <div style="border-style: none none dashed none; border-width: 1px; ">
-                    <p class="ps-3 pt-2">Some reaction</p>
-                </div>
-            </div>
+            {% endfor %}
+             
         </div>
     
     </div>

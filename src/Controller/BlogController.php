@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 use App\Entity\Blogs;
+use App\Entity\Comments;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
@@ -62,7 +63,7 @@ class BlogController extends AbstractController
     {
         try{
             
-
+               
             
             $lists = $this->em->getRepository(Blogs::class)->findBy(
                 array(),
@@ -73,8 +74,6 @@ class BlogController extends AbstractController
 
             $TopLimit = $page * 5;
             $BottomLimit = ($page * 5)-4;
-
-            
 
             $posts = $this->em->getRepository(Blogs::class)->findBy(
                 array(),
@@ -93,8 +92,7 @@ class BlogController extends AbstractController
                 'lists' => $lists,
                 'posts' => $posts,
                 'images' => $images,
-                
-                
+  
             ]);
         }catch(\Exception $e){
             
@@ -102,6 +100,7 @@ class BlogController extends AbstractController
             ]);
         
         }    
+        
     }
 
     
@@ -145,6 +144,8 @@ class BlogController extends AbstractController
     #[Route('/blog/{id}', name: 'blogPick')]
     public function gallery($id): Response
     {
+        $comments = $this->em->getRepository(Comments::class)->findAll(); 
+
         $posts = $this->em->getRepository(Blogs::class)->findBy(
             array(),
             array('id' => 'ASC'),
@@ -161,6 +162,7 @@ class BlogController extends AbstractController
             'picked' => $id,
             'posts' => $posts,
             'images' => $images,
+            'comments' => $comments
         ]);
     }
 

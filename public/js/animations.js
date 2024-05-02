@@ -1,14 +1,8 @@
 let rotate = document.querySelector('#rotateChevron');
 
-if (rotate.classList.contains("rotateDown")) {
-    console.log("Class active has been added");
-    // do something here if the class exists
-  }
+
 
 function rotateChevron() {
-    
-    
-    
     
 
     if (rotate.classList.contains("rotateDown")) {
