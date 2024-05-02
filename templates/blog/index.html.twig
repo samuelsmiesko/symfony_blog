@@ -4,79 +4,87 @@
 
 {% block body %}
 <style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%;  }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+    .example-wrapper {
+        margin: 1em auto;
+        max-width: 800px;
+        width: 95%;
+    }
+
+    .example-wrapper code {
+        background: #F5F5F5;
+        padding: 2px 6px;
+    }
 </style>
 
 <div class="example-wrapper">
- 
+
     <div class="row">
         <div class="col-6 p-0 ">
             {% set break = 0 %}
             {% for key, list in lists %}
-                {% if list.priority == 1 and break == 0 %}
-                        {% set break = 1 %}
-                        <a href="{{ path('blogPick',{id: list.id})}}">
-                            <div  class="image1" style=" height:400px; background-repeat: no-repeat;
+            {% if list.priority == 1 and break == 0 %}
+            {% set break = 1 %}
+            <a href="{{ path('blogPick',{id: list.id})}}">
+                <div class="image1" style=" height:400px; background-repeat: no-repeat;
                                 background-size: cover; 
                                 position: relative;
 
                                 background-image:url('data:image/png;base64,{{ images[key] }}')">
-                                <h4>{{list.title}}</h4>
-                                <div class="paragraph ">{{list.article}}</div>
-                            </div>
-                        </a>
-                {% endif %}
+                    <h4>{{list.title}}</h4>
+                    <div class="paragraph ">{{list.article}}</div>
+                </div>
+            </a>
+            {% endif %}
             {% endfor %}
         </div>
 
-        <div class="col-6 p-0 " >
+        <div class="col-6 p-0 ">
             {% set break = 0 %}
             {% for key, list in lists %}
-                {% if list.priority == 2 and break < 2 %}
-                        {% set break = break + 1 %}
-                        <a href="{{ path('blogPick',{id: list.id})}}">
-                            <div  class="image1" style=" height:200px; background-repeat: no-repeat;
+            {% if list.priority == 2 and break < 2 %}
+            {% set break = break + 1 %}
+            <a href="{{ path('blogPick',{id: list.id})}}">
+                <div class="image1" style=" height:200px; background-repeat: no-repeat;
                                 background-size: cover; 
                                 position: relative;
 
                                 background-image:url('data:image/png;base64,{{ images[key] }}')">
-                                <h4>{{list.title}}</h4>
-                                
-                                <div class="paragraph ">{{list.article}}</div>
-                            </div>
-                        </a>
-                {% endif %}
+                    <h4>{{list.title}}</h4>
+
+                    <div class="paragraph ">{{list.article}}</div>
+                </div>
+            </a>
+            {% endif %}
             {% endfor %}
         </div>
     </div>
 
-    
-
-    <div class= "paginationTag bg-white">  
-        <div class="row" id= "student">
-        </div>  
-    </div> 
+    <div class="paginationTag bg-white">
+        <div class="row" id="student">
+        </div>
+    </div>
 
     <div class="d-flex mt-5 justify-content-center ">
         <ul class="pagination ">
-        <li class="page-item "><a id = "1" class="page-link paginationTag bg-white loadstudent" >First</a></li>
-        {% set break = 0 %}
-        
-        {% for list in lists %}
+            <li class="page-item "><a id="1" class="page-link paginationTag bg-white loadstudent">First</a></li>
+            {% set break = 0 %}
+
+            {% for list in lists %}
             {% set lastElement = loop.length %}
             {% set foo = loop.length / 5 %}
-                {% if break == 0 %}
-                    <li class="page-item"><a id = "{{loop.index}}"  class="page-link paginationTag bg-white loadstudent" >{{loop.index}}</a></li>
-                {% endif %}
-                {% if loop.index > foo and break == 0 %}
-                    <li class="page-item"><a id = "{{loop.index}}" class="page-link paginationTag bg-white loadstudent" >last page</a></li> 
-                    {% set break = 1 %}
-                {% endif %}
-        {% endfor %}
+            {% if break == 0 %}
+            <li class="page-item"><a id="{{loop.index}}"
+                    class="page-link paginationTag bg-white loadstudent">{{loop.index}}</a></li>
+            {% endif %}
+            {% if loop.index > foo and break == 0 %}
+            <li class="page-item"><a id="{{loop.index}}" class="page-link paginationTag bg-white loadstudent">last
+                    page</a></li>
+            {% set break = 1 %}
+            {% endif %}
+            {% endfor %}
 
         </ul>
-        
+
     </div>
 
 
@@ -84,10 +92,10 @@
 </div>
 {% endblock %}
 {% block javascript %}
-    
-    
 
-<script >
+
+
+<script>
 
 </script>
 {% endblock %}

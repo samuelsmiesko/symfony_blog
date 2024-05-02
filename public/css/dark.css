@@ -81,3 +81,36 @@ a{
   
 }
 
+.rotateDown{
+    animation-name: example_spinner;
+    animation-duration: 0.3s;
+    
+    animation-fill-mode: forwards;
+}
+
+@keyframes example_spinner {
+    100%  {
+        transform: rotate(180deg);
+    
+    }
+    
+}
+
+.rotateUp{
+    animation-name: example_spinner_up;
+    animation-duration: 0.3s;
+    
+    animation-fill-mode: forwards;
+}
+
+@keyframes example_spinner_up {
+    0%  {
+        transform: rotate(180deg);
+    
+    }
+    100%  {
+        transform: rotate(0deg);
+    
+    }
+    
+}
