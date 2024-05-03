@@ -28,9 +28,7 @@ a{
     
 }
   
-svg{
-    fill:aliceblue !important;
-}
+
 
 .smallMenu{
     color:black !important;
@@ -73,3 +71,8 @@ h4{
     width: 60px;
 }
 
+#comments{
+    border-style: none none none solid; 
+    border-width: 8px; 
+    border-color: rgb(19, 104, 255);
+}

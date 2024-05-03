@@ -3,6 +3,7 @@
 namespace App\Controller;
 use App\Entity\Blogs;
 use App\Entity\Comments;
+use App\Entity\Reactions;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
@@ -146,6 +147,8 @@ class BlogController extends AbstractController
     {
         $comments = $this->em->getRepository(Comments::class)->findAll(); 
 
+        $reactions = $this->em->getRepository(Reactions::class)->findAll(); 
+
         $posts = $this->em->getRepository(Blogs::class)->findBy(
             array(),
             array('id' => 'ASC'),
@@ -162,7 +165,8 @@ class BlogController extends AbstractController
             'picked' => $id,
             'posts' => $posts,
             'images' => $images,
-            'comments' => $comments
+            'comments' => $comments,
+            'reactions' => $reactions
         ]);
     }
 
