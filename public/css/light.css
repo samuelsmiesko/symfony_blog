@@ -1,6 +1,6 @@
 body{
     
-    color:grey;
+    color:lightgray;
     font-family: "Platypi", serif;
     font-optical-sizing: auto;
     
@@ -17,7 +17,7 @@ header{
 
 a{
     text-decoration: none;
-    color:grey;
+    color:gray;
 }
 
 .paragraph{
@@ -48,10 +48,6 @@ h4{
     top: 15px;
 }
 
-.flash{
-    border-bottom: 1px dashed lightgrey;
-    
-}
 
 .spinner-wrapper{
     background-color: grey;

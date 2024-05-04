@@ -1,6 +1,6 @@
 body{
     background-color: black;
-    color:lightgray;
+    color:gray;
     font-family: "Platypi", serif;
     font-optical-sizing: auto;
 }
@@ -84,5 +84,5 @@ a{
 #comments{
     border-style: none none none solid; 
     border-width: 8px; 
-    border-color: grey; 
+    
 }

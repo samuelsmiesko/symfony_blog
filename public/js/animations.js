@@ -1,6 +1,8 @@
 let rotate = document.querySelector('#rotateChevron');
 let comment = document.querySelector('#comments');
 
+let respond = document.querySelector('#respond');
+
 
 function rotateChevron() {
     
@@ -18,4 +20,14 @@ function rotateChevron() {
         comment.classList.add("d-block");
         comment.classList.remove("d-none");
       }
+}
+
+function showRespond() {
+  if (respond.classList.contains("d-none")) {
+    respond.classList.remove("d-none");
+    respond.classList.add("d-block");
+  }else{
+    respond.classList.add("d-none");
+    respond.classList.remove("d-block");
+  }
 }
