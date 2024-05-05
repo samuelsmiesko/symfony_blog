@@ -23,6 +23,15 @@ class Reactions
     #[ORM\Column(length: 255)]
     private ?string $date = null;
 
+    #[ORM\Column(type: Types::TEXT)]
+    private ?string $commentsID = null;
+
+    #[ORM\Column(type: Types::TEXT, nullable: true)]
+    private ?string $commentslikes = null;
+
+    #[ORM\Column(type: Types::TEXT, nullable: true)]
+    private ?string $commentsdislikes = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -60,6 +69,42 @@ class Reactions
     public function setDate(string $date): static
     {
         $this->date = $date;
+
+        return $this;
+    }
+
+    public function getCommentsID(): ?string
+    {
+        return $this->commentsID;
+    }
+
+    public function setCommentsID(string $commentsID): static
+    {
+        $this->commentsID = $commentsID;
+
+        return $this;
+    }
+
+    public function getCommentslikes(): ?string
+    {
+        return $this->commentslikes;
+    }
+
+    public function setCommentslikes(?string $commentslikes): static
+    {
+        $this->commentslikes = $commentslikes;
+
+        return $this;
+    }
+
+    public function getCommentsdislikes(): ?string
+    {
+        return $this->commentsdislikes;
+    }
+
+    public function setCommentsdislikes(?string $commentsdislikes): static
+    {
+        $this->commentsdislikes = $commentsdislikes;
 
         return $this;
     }
